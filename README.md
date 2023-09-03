@@ -53,3 +53,37 @@
 `Polymorphism(다형성)`
 
 - 공통적인 속성을 가진 여러 개의 인스턴스를 생성할 수 있다는 개념을 다형성이라고 한다.
+
+## 클래스의 멤버변수
+
+`class-level`
+
+- static 키워드를 사용하면 class level 변수가 된다.
+- static 키워드가 붙은 멤버변수는 클래스와 연결되어 있으므로 인스턴스가 생성될 때마다 재생성되지 않아 메모리 낭비가 줄어든다.
+
+```ts
+class CoffeeMaker {
+  static BEANS_GRAM_PER_SHOT = 7;
+  coffeeBeans = 0;
+}
+
+const maker = new CoffeeMaker();
+console.log(maker); // CoffeeMaker { coffeeBeans: 0 }
+```
+
+</br>
+
+`instance-level`
+
+- instance(object) level
+- static 키워드를 사용하지 않은 멤버변수는 인스턴스가 생성될 때마다 재생성된다.
+
+```ts
+class CoffeeMaker {
+  static BEANS_GRAM_PER_SHOT = 7;
+  coffeeBeans = 0;
+}
+
+const maker = new CoffeeMaker();
+console.log(maker); // CoffeeMaker { BEANS_GRAM_PER_SHOT: 7, coffeeBeans: 30 }
+```
