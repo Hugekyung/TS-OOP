@@ -1,6 +1,6 @@
 // * 절차지향 프로그래밍으로 커피머신 기계 만들기
 // * 에스프레소를 내리는 기계
-function main(beans: string) {
+function makeCoffee(beans: string) {
   const water = 'water';
   const hotWater = getHotWater(water);
   const cup = getEspressoCup();
@@ -11,7 +11,7 @@ function main(beans: string) {
 }
 
 // * 뜨거운 물
-function getHotWater(water: string) {
+export function getHotWater(water: string) {
   const hotWater = 'hot' + water;
   return hotWater;
 }
@@ -33,8 +33,8 @@ function getEspresso(cup: string, espressoShot: string) {
   return `${cup} with ${espressoShot}`;
 }
 
-const columbiaEspresso = main('columbia beans');
+const columbiaEspresso = makeCoffee('columbia beans');
 console.log(columbiaEspresso);
 
-const ganaEspresso = main('gana beans');
+const ganaEspresso = makeCoffee('gana beans');
 console.log(ganaEspresso);
