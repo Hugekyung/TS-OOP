@@ -87,3 +87,25 @@ class CoffeeMaker {
 const maker = new CoffeeMaker();
 console.log(maker); // CoffeeMaker { BEANS_GRAM_PER_SHOT: 7, coffeeBeans: 30 }
 ```
+
+## 클래스 접근자 관련 키워드
+
+`public`
+
+- 내부, 외부 어디서든 접근 가능하다.
+- 아무런 키워드를 붙이지 않을 경우 기본적으로 public 취급한다.
+
+`private`
+
+- 외부에서 내부의 멤버변수나 함수에 접근하지 못하게 한다.
+- constructor에 대한 접근도 private으로 설정 해주는게 안전하다.
+
+`static`
+
+- 클래스 자체에 연결되도록 한다.
+- 클래스 생성 시 한 번만 생성되어 메모리 낭비를 줄일 수 있다.
+
+`protected`
+
+- protected 키워드를 사용하면 private과 동일하게 여전히 외부에서 접근 불가하다.
+- 해당 클래스를 상속받은 자식 클래스 내부에서는 접근이 가능하다.
