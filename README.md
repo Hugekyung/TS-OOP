@@ -88,7 +88,7 @@ const maker = new CoffeeMaker();
 console.log(maker); // CoffeeMaker { BEANS_GRAM_PER_SHOT: 7, coffeeBeans: 30 }
 ```
 
-## 클래스 접근자 관련 키워드
+## 클래스 접근 제어자 관련 키워드
 
 `public`
 
