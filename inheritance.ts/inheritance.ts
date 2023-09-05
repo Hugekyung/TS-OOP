@@ -70,7 +70,7 @@
     }
   }
 
-  // * CoffeeMachine 클래스 상속
+  // * CoffeeMachine 클래스를 상속 받은 디카페인커피 클래스
   class DeCaffeinCoffee extends CoffeeMachine {
     constructor(private coffeeBean: number) {
       super(coffeeBean);
@@ -78,5 +78,23 @@
     }
   }
 
-  const decaffein = new DeCaffeinCoffee(30);
+  // * CoffeeMachine 클래스를 상속 받은 라떼 클래스
+  class Latte extends CoffeeMachine {
+    constructor(private coffeeBean: number) {
+      super(coffeeBean);
+      this.coffeeBean = coffeeBean;
+    }
+  }
+
+  const decaffeinCoffee = DeCaffeinCoffee.makeMachine(40);
+  decaffeinCoffee.fillCoffeeBeans(20);
+  decaffeinCoffee.makeCoffee(2);
+  decaffeinCoffee.clean();
+  console.log('decaffeinCoffee >>', decaffeinCoffee);
+
+  const latte = Latte.makeMachine(40);
+  latte.fillCoffeeBeans(20);
+  latte.makeCoffee(2);
+  latte.clean();
+  console.log('latte >>', latte);
 }
