@@ -4,19 +4,20 @@
 abstract class BaseCoffeeMachine {
   constructor(protected beans: number) {}
 
-  abstract getBeans(): number;
-  abstract grindBeans(): string;
-  abstract getCoffee(): string;
+  getBeans(): number {
+    return this.beans;
+  }
+
+  // * abstract method는 자식 클래스에서 반드시 구현해야 한다.
+  // * protected 키워드가 붙으면 해당 클래스를 상속 받은 자식 클래스에서만 접근이 가능한 method가 된다.
+  protected abstract grindBeans(): string;
+  protected abstract getCoffee(): string;
 }
 
 // * abstract class에 선언되어 있는 메소드는 상속받은 자식 클래스에서 반드시 구현해야 한다.
 class CheapCoffeeMachine extends BaseCoffeeMachine {
   constructor(beans: number) {
     super(beans);
-  }
-
-  getBeans(): number {
-    return this.beans;
   }
 
   grindBeans(): string {
