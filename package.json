@@ -3,6 +3,7 @@
     "ts-node": "^10.9.1"
   },
   "dependencies": {
+    "js-joda": "^1.11.0",
     "typescript": "^5.2.2"
   }
 }
