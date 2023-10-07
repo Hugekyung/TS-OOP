@@ -22,6 +22,7 @@ function loginByEmail(
     return new Error('로그인이 불가합니다.'); // * 소셜 회원의 이메일 로그인 시도
   }
 
+  // TODO: 영구정지 회원을 판별하는 함수로 분리생성
   if (user.userBan) {
     for (const userBan of user.userBan) {
       // * 영구 정지 회원인 경우
