@@ -15,15 +15,8 @@ function loginByEmail(
   }
 
   let data: any = null;
-  if (user.accountStatus === 'disable') {
-    return new Error('이미 탈퇴한 회원입니다.');
-  }
-
-  if (user.password === '') {
-    return new Error('로그인이 불가합니다.'); // * 소셜 회원의 이메일 로그인 시도
-  }
-
-  // * 영구정지 회원 판별
+  UserFunction.checkDisabledUser(user);
+  UserFunction.checkEmailLoginBySocialUser(user);
   UserFunction.banCheck(user);
 
   if (user.password === password) {
