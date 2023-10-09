@@ -1,6 +1,7 @@
 import { LocalDateTime } from 'js-joda';
 import { EmailLoginReqDto } from './dto/login-dto';
 import { DateService } from './util/date';
+import { UserFunction } from './util/user';
 
 function loginByEmail(
   deviceType: string,
@@ -22,15 +23,8 @@ function loginByEmail(
     return new Error('로그인이 불가합니다.'); // * 소셜 회원의 이메일 로그인 시도
   }
 
-  // TODO: 영구정지 회원을 판별하는 함수로 분리생성
-  if (user.userBan) {
-    for (const userBan of user.userBan) {
-      // * 영구 정지 회원인 경우
-      if (userBan.banLevel === 3) {
-        return new Error('영구 정지 회원입니다.');
-      }
-    }
-  }
+  // * 영구정지 회원 판별
+  UserFunction.banCheck(user);
 
   if (user.password === password) {
     // * userAccountId로 해당 유저의 전체 userAccounts 조회 후 2개 이상 -> 계정 선택
