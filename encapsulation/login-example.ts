@@ -3,7 +3,7 @@ import { EmailLoginReqDto } from './dto/login-dto';
 import { DateService } from './util/date';
 import { UserFunction } from './util/user';
 
-function loginByEmail(
+async function loginByEmail(
   deviceType: string,
   locale: string,
   body: EmailLoginReqDto
@@ -83,17 +83,9 @@ function loginByEmail(
     return new Error('비밀번호 틀림'); // * 비밀번호 불일치
   }
 
-  // TODO: 다계정 유저에 대한 계정처리 함수 별도로 분리
   // * (UserAccount row가 1개인 계정 대상)UserAccount.email 값이 빈 string인 경우, 로그인한 계정의 email을 업데이트
   const userAccounts = this.userAccountRepository.findManyByUser(user.id);
-  if (
-    userAccounts.length === 1 &&
-    userAccounts[0].type === 'email' &&
-    userAccounts[0].email === ''
-  ) {
-    userAccounts[0].email = email;
-    this.userAccountRepository.save(userAccounts[0]);
-  }
+  await UserFunction.checkUserAccountAndFillEmail(userAccounts, email);
 
   if (!data) {
     return new Error('데이터가 없음');
